@@ -11,6 +11,7 @@ export class EditActorComponent implements OnInit {
   constructor (private activatedRoute: ActivatedRoute) {}
 
   model: actorDTO = {
+    id: 8,
     name: 'Tom Holland',
     dateOfBirth: new Date(),
     biography: 'default Value',
