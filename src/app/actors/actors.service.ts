@@ -27,8 +27,21 @@ export class ActorsService {
     return this.http.get<actorDTO[]>(this.apiURL, {params});
   }
 
+  getById(id: number) : Observable<actorDTO> {
+    return this.http.get<actorDTO>(`${this.apiURL}/${id}`);
+  }
+
   getCount() : Observable<number> {
     return this.http.get<number>(this.apiURL + '/count');
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.apiURL}/${id}`);
+  }
+
+  edit(id: number, actorDto: actorCreationDTO) {
+    const formData = this.buildFormData(actorDto);
+    return this.http.put(`${this.apiURL}/${id}`, formData);
   }
 
   private buildFormData(actor: actorCreationDTO): FormData {
